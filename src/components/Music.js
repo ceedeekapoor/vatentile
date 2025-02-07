@@ -42,9 +42,15 @@ const MusicPlayer = () => {
   ];
   
 
-  const [audio, setAudio] = useState(new Audio(trackUrl[0]));
+  const [audio, setAudio] = useState(null);
   const [buffering, setBuffering] = useState(false);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") { // Ensure it's running in the browser
+      const newAudio = new Audio(trackUrl[currentTrackIndex]);
+      setAudio(newAudio);
+    }
+  }, [currentTrackIndex]);
   useEffect(() => {
     const currentAudio = audio;
     currentAudio.addEventListener('timeupdate', handleTimeUpdate);
