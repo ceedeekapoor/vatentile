@@ -4,7 +4,7 @@ import "../styles/popup.css";
 import Confetti from "react-confetti";
 import MailboxClosed from "../images/mailbox.png";
 import MailboxOpen from "../images/open-mailbox.png";
-import Scissors from "../images/scissor.png"; 
+// import Scissors from "../images/scissor.png"; 
 import ClosedLetter from "../images/letter.png";
 import OpenLetter from "../images/opened-letter.png";
 import DraggableLetter from "../images/drag-letter.png";
@@ -182,7 +182,7 @@ const Popup = () => {
             grid={[1, 1]}
           >
             <img 
-              src={DraggableLetter} 
+              src='/drag-letter.png'
               width={100} 
               alt="Letter Inside" 
               className="draggable-letter"
@@ -195,19 +195,19 @@ const Popup = () => {
   <div className="letter-container ">
     <img 
       ref={letterRef}
-      src={isLetterOpen ? OpenLetter : ClosedLetter} 
+      src={isLetterOpen ? '/opened-letter.png' : '/letter.png'} 
       width={300} 
       alt="Letter" 
       className="closed-letter"
     />
-    
+     
     <Draggable
   onDrag={handleScissorDrag}
   onStart={(e) => e.target.classList.add('dragging')}
   onStop={(e) => e.target.classList.remove('dragging')}
 >
   <img 
-    src={Scissors} 
+    src='/scissor.png'
     width={50} 
     alt="Scissors" 
     className="scissors"
@@ -241,7 +241,7 @@ const Popup = () => {
     <div>
       <img 
         ref={secondLetterRef}
-        src={isSecondLetterOpen ? Riddle : ClosedLetter} 
+        src={isSecondLetterOpen ? Riddle : '/letter.png'} 
         alt="Second Letter" 
         className="riddle-image"
       />
@@ -251,7 +251,7 @@ const Popup = () => {
         onStop={(e) => e.target.classList.remove('dragging')}
       >
         <img 
-          src={Scissors} 
+          src='/scissor.png'
           width={50} 
           alt="Scissors" 
           className="scissors"
