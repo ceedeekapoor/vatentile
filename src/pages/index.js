@@ -31,12 +31,11 @@ const App = () => {
         </>
       ) : (
         <>
-             {/* <MusicPlayer />
+             <MusicPlayer />
 
               <Countdown />
 
-     <GamesSection /> */}
-          <LoveCalculator />
+     <GamesSection />
 
            
           </>
