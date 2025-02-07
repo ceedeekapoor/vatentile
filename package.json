@@ -8,9 +8,11 @@
     "gatsby"
   ],
   "scripts": {
-    "clean": "gatsby clean",
-    "prebuild": "gatsby clean",
-    "build": "gatsby build"
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
