@@ -156,7 +156,7 @@ const Popup = () => {
       colors={['#ff4d6d', '#ff85a1', '#ffc2d1', '#ffb3c1']}
     />
     <div className="celebration-message">
-      <h1>Yay! ILYSM</h1>
+      <h1 className="yey-txt">Yay! ILYSM</h1>
     </div>
   </>
 )}

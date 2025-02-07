@@ -5,13 +5,14 @@ import LoveCalculator from '../components/Calculator';
 import GamesSection from '../components/GamesSection';
 // import Slideshow from '../components/Slideshow';
 import Question from '../components/Questions';
+import { Helmet } from 'react-helmet';
 
 const App = () => {
   const [isValentinesDay, setIsValentinesDay] = useState(false);
 
   useEffect(() => {
     const today = new Date();
-    const valentinesDay = new Date(today.getFullYear(), 1, 9); // 14th Feb
+    const valentinesDay = new Date(today.getFullYear(), 1, 9);
     if (today.getDate() === valentinesDay.getDate() && today.getMonth() === valentinesDay.getMonth()) {
       setIsValentinesDay(true);
     }
@@ -19,6 +20,10 @@ const App = () => {
 
   return (
     <div className="App">
+      <Helmet>
+      <title>Valentine - Home</title>
+
+      </Helmet>
       {isValentinesDay ? (
         <>
           <LoveCalculator />
@@ -26,11 +31,12 @@ const App = () => {
         </>
       ) : (
         <>
-             <MusicPlayer />
+             {/* <MusicPlayer />
 
               <Countdown />
 
-     <GamesSection />
+     <GamesSection /> */}
+          <LoveCalculator />
 
            
           </>

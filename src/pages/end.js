@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const End = () => {
   return (
@@ -9,6 +10,9 @@ const End = () => {
       justifyContent: 'center',
       alignItems: 'center',
     }}>
+      <Helmet>
+        <title>BYBYE</title>
+      </Helmet>
       <h1 style={{
         fontSize: '3rem',
         textAlign: 'center',

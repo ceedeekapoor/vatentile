@@ -106,7 +106,7 @@ const LoveCalculator = () => {
       if( (name1.toLowerCase() === "siddhi" && name2.toLowerCase() === "saad") ||
       (name1.toLowerCase() === "saad" && name2.toLowerCase() === "siddhi") ) 
         {
-        setResult("1 gazillion % match");
+        setResult("1000000000 % match");
       } else {
         setResult("image");
       }
@@ -209,7 +209,7 @@ const LoveCalculator = () => {
           ) : (
             <div className="success-match">
               <h2 className="result-text">{result}</h2>
-              <p className="text" >THATS INSANE WE YALL SHOULD MARRY</p>
+              <p className="text" >THATS INSANE YALL SHOULD MARRY</p>
               <button
                 className="proceed-button"
                 onClick={() => navigate("/questions")}
