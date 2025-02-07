@@ -4,7 +4,7 @@ import "../styles/popup.css";
 import Confetti from "react-confetti";
 import MailboxClosed from "../images/mailbox.png";
 import MailboxOpen from "../images/open-mailbox.png";
-import Scissors from "../images/scissor.png";  // Add your scissors image
+import Scissors from "../images/scissor.PNG"; 
 import ClosedLetter from "../images/letter.PNG";
 import OpenLetter from "../images/opened-letter.PNG";
 import DraggableLetter from "../images/drag-letter.PNG";
