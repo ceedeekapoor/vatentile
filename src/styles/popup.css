@@ -24,12 +24,12 @@
 
 .draggable-letter {
   position: absolute;
-  top: 210px;
+  top: 222px;
   left: 38.8%;
   transform: translateX(-50%);
   cursor: grab;
   width: 81px;
-  height: 74px;
+  height: 63px;
 }
 
 .letter-container {

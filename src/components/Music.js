@@ -1,23 +1,24 @@
-import React, { useState, useEffect, useRef } from "react";
-import "../styles/musicPlayer.css";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBackward, faForward, faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
+import "../styles/musicPlayer.css"; // Add your CSS styles
 
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const audioRef = useRef(new Audio()); // useRef to persist the audio element
+  const [audio, setAudio] = useState(null);
 
   const albums = [
-    "Chet baker",
+    "Chet Baker",
     "Dayglow",
     "Cigarettes After Sex",
     "Matthew Ifield",
     "Rex Orange County",
     "The Cardigans",
   ];
+
   const trackNames = [
     "Like Someone In Love",
     "Close to You",
@@ -26,6 +27,7 @@ const MusicPlayer = () => {
     "THE SHADE",
     "Lovefool",
   ];
+
   const albumArtworks = [
     "/images/1.jpg",
     "/images/2.webp",
@@ -34,6 +36,7 @@ const MusicPlayer = () => {
     "/images/5.jpg",
     "/images/6.jpeg",
   ];
+
   const trackUrl = [
     "/audio/1.mp3",
     "/audio/2.mp3",
@@ -43,10 +46,27 @@ const MusicPlayer = () => {
     "/audio/6.mp3",
   ];
 
+  // Initialize Audio only in the browser
   useEffect(() => {
-    const audio = audioRef.current;
-    audio.src = trackUrl[currentTrackIndex]; // Update audio source when track changes
-    audio.load(); // Load the new track
+    if (typeof window !== "undefined") {
+      if (audio) {
+        audio.pause(); // Stop the previous audio before switching tracks
+      }
+
+      // Create new audio instance
+      const newAudio = new Audio(trackUrl[currentTrackIndex]);
+      setAudio(newAudio);
+
+      // Auto-play the new track if it was already playing
+      if (isPlaying) {
+        newAudio.play();
+      }
+    }
+  }, [currentTrackIndex]); // Run when track index changes
+
+  // Handle Audio Events
+  useEffect(() => {
+    if (!audio) return;
 
     const handleTimeUpdate = () => {
       setCurrentTime(audio.currentTime);
@@ -54,7 +74,8 @@ const MusicPlayer = () => {
     };
 
     const handleTrackEnd = () => {
-      playNext(); // Auto play next song
+      setIsPlaying(false);
+      setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % trackUrl.length);
     };
 
     audio.addEventListener("timeupdate", handleTimeUpdate);
@@ -64,10 +85,11 @@ const MusicPlayer = () => {
       audio.removeEventListener("timeupdate", handleTimeUpdate);
       audio.removeEventListener("ended", handleTrackEnd);
     };
-  }, [currentTrackIndex]);
+  }, [audio]);
 
+  // Play / Pause Function
   const playPause = () => {
-    const audio = audioRef.current;
+    if (!audio) return;
     if (isPlaying) {
       audio.pause();
     } else {
@@ -76,32 +98,37 @@ const MusicPlayer = () => {
     setIsPlaying(!isPlaying);
   };
 
+  // Previous Track
   const playPrevious = () => {
-    setCurrentTrackIndex((prev) => (prev - 1 + trackUrl.length) % trackUrl.length);
-    setIsPlaying(true);
+    setCurrentTrackIndex((prevIndex) =>
+      prevIndex === 0 ? trackUrl.length - 1 : prevIndex - 1
+    );
   };
 
+  // Next Track
   const playNext = () => {
-    setCurrentTrackIndex((prev) => (prev + 1) % trackUrl.length);
-    setIsPlaying(true);
+    setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % trackUrl.length);
   };
 
-  const handleSeekBarClick = (e) => {
-    const seekBar = e.currentTarget;
-    const rect = seekBar.getBoundingClientRect();
-    const position = (e.clientX - rect.left) / rect.width;
-    const newTime = position * duration;
-    audioRef.current.currentTime = newTime;
-    setCurrentTime(newTime);
-  };
-
+  // Format Time (mm:ss)
   const formatTime = (time) => {
-    if (isNaN(time)) return "0:00";
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
   };
 
+  // Seek Bar Click
+  const handleSeekBarClick = (e) => {
+    if (!audio || !duration) return;
+    const seekBar = e.currentTarget;
+    const rect = seekBar.getBoundingClientRect();
+    const position = (e.clientX - rect.left) / rect.width;
+    const newTime = position * duration;
+    audio.currentTime = newTime;
+    setCurrentTime(newTime);
+  };
+
+  // Seek Bar Width
   const seekBarWidth = duration ? (currentTime / duration) * 100 : 0;
 
   return (
@@ -117,14 +144,16 @@ const MusicPlayer = () => {
             <div id="track-length">{formatTime(duration)}</div>
           </div>
           <div id="seek-bar-container" onClick={handleSeekBarClick}>
-            <div id="seek-time"></div>
-            <div id="s-hover"></div>
             <div id="seek-bar" style={{ width: `${seekBarWidth}%` }}></div>
           </div>
         </div>
         <div id="player-content">
-          <div id="album-art" className={isPlaying ? "active" : ""}>
-            <img src={albumArtworks[currentTrackIndex]} className="active" alt="Album Art" />
+          <div id="album-art" className={`${isPlaying ? "active" : ""}`}>
+            <img
+              src={`${albumArtworks[currentTrackIndex]}`}
+              className="active"
+              alt="Album Art"
+            />
           </div>
           <div id="player-controls">
             <div className="control">
