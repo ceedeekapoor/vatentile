@@ -19,7 +19,8 @@
     padding: 2rem;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   }
-  
+  .pig-button{
+padding: 12px;  }
   .options-container {
     display: flex;
     flex-direction: column;

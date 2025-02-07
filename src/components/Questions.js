@@ -236,7 +236,7 @@ const Questions = () => {
                 value={apologyText}
                 onChange={(e) => setApologyText(e.target.value)}
               />
-              <button type="submit">Apologize</button>
+              <button className='pig-button' type="submit">Apologize</button>
             </form>
           </div>
         )}
