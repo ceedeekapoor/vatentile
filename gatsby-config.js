@@ -8,12 +8,6 @@ module.exports = {
     "gatsby-plugin-sharp", 
     "gatsby-transformer-sharp",
     {
-      resolve: 'gatsby-plugin-webpack-encoding',
-      options: {
-        encoding: 'utf-8'
-      }
-    },
-    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
