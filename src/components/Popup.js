@@ -4,10 +4,10 @@ import "../styles/popup.css";
 import Confetti from "react-confetti";
 import MailboxClosed from "../images/mailbox.png";
 import MailboxOpen from "../images/open-mailbox.png";
-import Scissors from "../images/scissor.PNG"; 
-import ClosedLetter from "../images/letter.PNG";
-import OpenLetter from "../images/opened-letter.PNG";
-import DraggableLetter from "../images/drag-letter.PNG";
+// import Scissors from "../images/scissor.PNG"; 
+// import ClosedLetter from "../images/letter.PNG";
+// import OpenLetter from "../images/opened-letter.PNG";
+// import DraggableLetter from "../images/drag-letter.PNG";
 import Riddle from "../images/riddle.png";
 import { navigate } from "gatsby";
 const Popup = () => {
@@ -182,7 +182,7 @@ const Popup = () => {
             grid={[1, 1]}
           >
             <img 
-              src={DraggableLetter} 
+              // src={DraggableLetter} 
               width={100} 
               alt="Letter Inside" 
               className="draggable-letter"
@@ -195,7 +195,7 @@ const Popup = () => {
   <div className="letter-container ">
     <img 
       ref={letterRef}
-      src={isLetterOpen ? OpenLetter : ClosedLetter} 
+      // src={isLetterOpen ? OpenLetter : ClosedLetter} 
       width={300} 
       alt="Letter" 
       className="closed-letter"
@@ -207,7 +207,7 @@ const Popup = () => {
   onStop={(e) => e.target.classList.remove('dragging')}
 >
   <img 
-    src={Scissors} 
+    // src={Scissors} 
     width={50} 
     alt="Scissors" 
     className="scissors"
@@ -241,7 +241,7 @@ const Popup = () => {
     <div>
       <img 
         ref={secondLetterRef}
-        src={isSecondLetterOpen ? Riddle : ClosedLetter} 
+        // src={isSecondLetterOpen ? Riddle : ClosedLetter} 
         alt="Second Letter" 
         className="riddle-image"
       />
@@ -251,7 +251,7 @@ const Popup = () => {
         onStop={(e) => e.target.classList.remove('dragging')}
       >
         <img 
-          src={Scissors} 
+          // src={Scissors} 
           width={50} 
           alt="Scissors" 
           className="scissors"
