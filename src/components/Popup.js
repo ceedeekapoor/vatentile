@@ -4,11 +4,10 @@ import "../styles/popup.css";
 import Confetti from "react-confetti";
 import MailboxClosed from "../images/mailbox.png";
 import MailboxOpen from "../images/open-mailbox.png";
-import LetterInside from "../images/letter.png";
 import Scissors from "../images/scissor.png";  // Add your scissors image
-import ClosedLetter from "../images/letter.png";
-import OpenLetter from "../images/opened-letter.png";
-import DraggableLetter from "../images/drag-letter.png";
+import ClosedLetter from "../images/letter.PNG";
+import OpenLetter from "../images/opened-letter.PNG";
+import DraggableLetter from "../images/drag-letter.PNG";
 import Riddle from "../images/riddle.png";
 import { navigate } from "gatsby";
 const Popup = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/lovemaze.css';
+import '../styles/loveMaze.css';
 
 const Maze = ({ maze, startImage, endImage, playerPosition }) => {
   return (
