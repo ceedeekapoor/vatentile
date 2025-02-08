@@ -31,17 +31,8 @@ const App = () => {
       <Helmet>
         <title>Valentine - Home</title>
       </Helmet>
-      {isValentinesDay ? (
-        <>
           <LoveCalculator />
-        </>
-      ) : (
-        <>
-          <MusicPlayer />
-          <Countdown />
-          <GamesSection />
-        </>
-      )}
+
     </div>
   );
 };
